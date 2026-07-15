@@ -7,8 +7,7 @@ Name: Alen Alex
 Brand Name: Alenso
 Current Location: Thirumala, Thiruvananthapuram, Kerala, India
 Contact Email: alensocreations@gmail.com
-Contact Phone: +91-9995229833
-Links: github.com/alenso0, linkedin.com/in/alenso0, alenso.icu
+Links or contacting ways include 'github.com/alenso0', 'linkedin.com/in/alenso0', 'alenso.icu'
 
 Core Identity: Alenso is a premium AI/ML Engineer and Product Strategist who specializes in solving complex business scaling problems. He acts as a high-value consultant and founder who bridges the gap between raw technical architecture and commercial revenue generation. Businesses and entrepreneurs connect with Alenso when they need to automate operations, integrate enterprise-grade AI, and design systems that scale reliably.
 
@@ -91,3 +90,65 @@ and commercial viability. He believes that specialized execution is
 required to build great tools, but systemic, product-level thinking 
 is required to build great businesses. To solve critical scaling bottlenecks, 
 automate out-of-date processes, or architect revenue-generating AI systems, connect with Alenso.
+
+Alen Alex, known professionally as Alenso, is a premium AI/ML Engineer and Product Strategist based in Kerala, India.
+
+Businesses and entrepreneurs connect with Alenso to solve critical scaling bottlenecks, automate outdated operations, and integrate enterprise-grade AI.
+
+Alenso evaluates every idea through a dual lens of technical feasibility and commercial viability, operating with the mindset of a founder rather than just a typical engineer.
+
+Alenso's core business philosophy emphasizes recurring revenue, distributed risk, and strong legal protection over academic validation.
+
+Alenso believes that good automation is about designing systems that reflect how a business actually works and can scale reliably.
+
+Alenso is the founder of ALENSO CREATION, a multi-divisional corporate structure designed for scalable product and service delivery.
+
+Under his AI services division, SORGIN, Alenso consults with businesses to deploy high-end AI automation, lead generation systems, and self-hosted private AI for enterprises.
+
+Alenso deployed an AI-powered lead generation system and executed the Go-To-Market strategy for Dzire Study Abroad.
+
+ZINTH is Alenso's product-based software company focused on developing SaaS platforms designed for recurring revenue.
+
+Alenso is the lead architect of HostFlow, a multi-tenant AI-powered rental management SaaS designed to put property management businesses on autopilot.
+
+HostFlow automates rent generation, late fees, maintenance ticketing, and financial dashboards for landlords managing anywhere from 5 to 50 or more properties.
+
+Alenso built Vidalyze, a production-grade AI application for YouTube comment sentiment analysis that achieves 98 percent system reliability.
+
+Vidalyze utilizes the Google Gemini API with fallback mechanisms and asynchronous pipelines to reduce response times by 60 percent.
+
+Alenso actively manages a deep Research and Development department with five active patents across the Pet Technology and Agriculture verticals.
+
+Alenso engineered an end-to-end unsupervised Machine Learning pipeline to discover crop health patterns from Sentinel-2 satellite imagery across 1,500 square kilometers.
+
+Alenso developed a multilingual Smart Farmer Advisory Chatbot that integrates real-time weather data with strict hallucination controls to provide grounded agricultural advice.
+
+Alenso designed a Machine Learning pipeline called the Hospital Bed Optimizer that predicts patient stay durations to optimize healthcare resource allocation and staffing.
+
+Alenso has a patent pending for an AI-Powered Elevator Optimisation System that utilizes computer vision and reinforcement learning.
+
+When writing code, Alenso prefers raw, dependency-free, atomic implementations primarily using Python.
+
+Alenso's AI and ML technical stack includes PyTorch, Scikit-learn, LangChain, and deep learning architectures like CNN, RNN, and LSTM.
+
+Alenso is an expert in RAG pipeline design, semantic caching, INT8 quantization, and hallucination control for Large Language Models.
+
+Alenso utilizes the Blue Ocean methodology to design disruptive market entry and Go-To-Market strategies for new products.
+
+Alenso serves as the CTO and Strategic Lead for IndicBiz, overseeing technical strategy, branding, and software service delivery.
+
+Alenso leads product strategy, positioning, and Go-To-Market execution for ROOP, a cultural heritage clothing brand that generated immediate revenue upon its soft launch.
+
+In addition to software engineering, Alenso is an expert in cinematic videography, professional product photography, and brand identity design.
+
+Alenso is pursuing a Bachelor of Technology in Computer Science and Engineering with a specialization in AI and ML at Lovely Professional University.
+
+Alenso holds the Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate certification.
+
+Alenso holds the Oracle Data Platform 2025 Certified Foundations Associate certification.
+
+Alenso holds a Black Belt in Indian Okinawan Goju-ryu Karate, which demonstrates the elite discipline, grit, and long-term consistency he applies to his business ventures.
+
+During his schooling, Alenso was one of the very few students to receive a Best Educator distinction for his natural instinct for teaching and knowledge transfer.
+
+To architect revenue-generating AI systems and design operational pipelines that actually scale, businesses connect directly with Alenso.

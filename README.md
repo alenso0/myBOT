@@ -4,25 +4,33 @@ A minimal **RAG (Retrieval-Augmented Generation) chatbot** built with [Streamlit
 
 ## How it works
 
+Retrieval is **hybrid**: it combines vector semantic search with BM25 lexical (keyword) search, so a question is answered well whether the match is about *meaning* (e.g. "how can he help my business scale?") or an *exact keyword* (e.g. "does he do karate?").
+
 ```
-alenso.txt  ──chunk──►  embed (Ollama)  ──►  in-memory vector DB
-                                                     │
-user question ──embed (Ollama)──► cosine similarity ─┘
-                                                     │
-                                            top-N matching chunks
-                                                     │
-                                     prompt = system context + question
-                                                     │
-                                        Ollama chat model (streamed)
-                                                     │
-                                              answer in the UI
+                     ┌─chunk (paragraph + sentence)─►  embed (Ollama)  ──► in-memory vector DB ─┐
+alenso.txt ──────────┤                                                                          │
+                     └─────────────────same chunks────► BM25 (lexical) index ───────────────────┤
+                                                                                                  │
+user question ──► embed (Ollama) → cosine similarity ───────────────────────────────────────────┤
+              └──► BM25 score ───────────────────────────────────────────────────────────────────┤
+                                                                                                  ▼
+                                                                     Reciprocal Rank Fusion (RRF)
+                                                                                                  │
+                                                                                    top-N matching chunks
+                                                                                                  │
+                                                                     prompt = system context + question
+                                                                                                  │
+                                                                        Ollama chat model (streamed)
+                                                                                                  │
+                                                                                    answer in the UI
 ```
 
-1. **Chunking** — [main.py](main.py) reads `alenso.txt` and splits it into paragraph-sized chunks (blank-line separated).
+1. **Chunking** — [main.py](main.py) reads `alenso.txt` and splits it at two granularities: paragraph-level (blank-line separated) for broad context, and sentence-level within each paragraph for precise single facts. Duplicates are dropped.
 2. **Embedding** — each chunk is embedded via Ollama's embedding model and cached in memory for the session (`@st.cache_resource`), so this only happens once per app run.
-3. **Retrieval** — when you ask a question, it's embedded the same way, then compared against every chunk using cosine similarity; the top 3 matches are selected.
-4. **Generation** — the matched chunks are injected into a system prompt that instructs the model to answer *only* from that context, then the chat model streams its response token-by-token into the UI.
-5. **Transparency** — the sidebar shows exactly which chunks were retrieved and their similarity scores, so you can see why the model answered the way it did.
+3. **Lexical indexing** — the same chunks are also indexed with a from-scratch BM25 (Okapi) implementation (pure Python, no extra dependency) for exact-keyword matching.
+4. **Retrieval** — when you ask a question, it's scored two ways: cosine similarity against the vector DB, and BM25 against the lexical index. The two rankings are merged with Reciprocal Rank Fusion (RRF), and the top 4 fused matches are selected.
+5. **Generation** — the matched chunks are injected into a system prompt that instructs the model to answer *only* from that context, then the chat model streams its response token-by-token into the UI.
+6. **Transparency** — the sidebar shows exactly which chunks were retrieved and their fused RRF relevance score, so you can see why the model answered the way it did.
 
 ## Prerequisites
 
