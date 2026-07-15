@@ -1,6 +1,7 @@
 import streamlit as st
 import ollama
 import os
+import re
 
 st.set_page_config(page_title="Ollama RAG Demo",layout="centered")
 st.title("Alenso's myBOT Demo")
@@ -20,23 +21,26 @@ def initialize_vector_db():
     if not os.path.exists(dataset_path):
         # Creating a fallback file for demonstration if it doesn't exist
         with open(dataset_path, 'w') as f:
-            f.write("Cats sleep for 12-16 hours a day to conserve energy.\n")
-            f.write("A group of cats is called a clowder.\n")
-            f.write("Cats use their whiskers to detect if they can fit through a space.\n")
-            f.write("Cats have over 20 muscles that control their ears.\n")
-            f.write("The first cat in space was a French cat named Félicette in 1963.\n")
+            f.write("Alenso (Alen Alex) is a premium AI/ML Engineer, Founder, Product Strategist, and Business Scaling Expert based in Thiruvananthapuram, Kerala, India.\n\n")
+            f.write("Alenso is the founder of ALENSO CREATION, a multi-divisional corporate structure spanning SORGIN (AI automation and GTM consulting), ZINTH (SaaS products like HostFlow), and an R&D department focused on AI patents.\n\n")
+            f.write("Alenso's premium services include AI automation and system design, RAG pipelines, Go-To-Market strategy, SaaS architecture, and strategic branding and product management.\n")
 
-    with open(dataset_path, 'r',encoding="utf-8") as file:
-        dataset = file.readlines()
-    
+    with open(dataset_path, 'r', encoding="utf-8") as file:
+        raw_text = file.read()
+
+    # Split into paragraph-level chunks (separated by blank lines) so each
+    # embedding covers a complete thought instead of a fragment of one.
+    dataset = re.split(r'\n\s*\n', raw_text)
+
     vector_db = []
-    
+
     # Progress bar for visual feedback during startup embedding generation
     status_text = st.empty()
     progress_bar = st.progress(0)
-    
+
     for i, chunk in enumerate(dataset):
-        chunk = chunk.strip()
+        # Collapse the hard-wrapped lines within a paragraph into one clean string.
+        chunk = ' '.join(line.strip() for line in chunk.splitlines() if line.strip())
         if not chunk:
             continue
         status_text.text(f"Embedding chunk {i+1}/{len(dataset)}...")
@@ -94,7 +98,7 @@ with st.sidebar:
 
 
 # User Input
-input_query = st.text_input("Ask me a question about cats:", placeholder="e.g., How long do cats sleep?")
+input_query = st.text_input("Ask a question about Alenso:", placeholder="e.g., What services does Alenso offer?")
 
 if input_query:
     # Perform Retrieval
@@ -107,8 +111,13 @@ if input_query:
             st.markdown("---")
 
     # Construct the instruction prompt
-    instruction_prompt = f"""You are a helpful chatbot.
-Use only the following pieces of context to answer the question. Don't make up any new information:
+    instruction_prompt = f"""You are Alenso's personal assistant chatbot, talking directly to a visitor who wants to know if Alenso is the right fit for them. Speak to the user as "you", not in the third person about "your business" in the abstract - make it feel like a conversation, not a brochure.
+
+Naming rule: his name is always "Alen Alex", also known as "Alenso". Spell both exactly this way every time - never alter, misspell, or vary them (not "Alenzo", "Allen", "Alonso", etc).
+
+Use only the context below to answer, and don't invent information that isn't there. If the context doesn't answer the user's question, don't just say you don't know - instead, tell the user you don't have that specific detail and invite them to book a call/meeting with Alenso directly to discuss it, sharing his contact email (alensocreations@gmail.com) or phone (+91-9995229833).
+
+Context:
 {'\n'.join([f' - {chunk}' for chunk, similarity in retrieved_knowledge])}
 """
 
