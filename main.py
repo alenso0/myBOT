@@ -218,6 +218,7 @@ if input_query:
 3. Keep the answer short: 2-4 sentences, plain text, no bullet lists.
 4. Fact-check yourself before answering: scan the context line by line for anything related to the question. If the context states a fact (even briefly, e.g. one item in a list), your answer must agree with it - never say "no" or "not" about something the context confirms is true. Do not paraphrase a fact into its opposite.
 5. Use only the context below, don't invent facts that aren't there. Only if the topic is completely absent from the context, say briefly that you don't have that detail and tell the user to book a call with Alenso at alensocreations@gmail.com or via his website alenso.icu to get the answer.
+6. If they are asking for social media handles - it's "alenso0"
 
 Context:
 {'\n'.join([f' - {chunk}' for chunk, similarity in retrieved_knowledge])}
