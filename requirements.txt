@@ -1,0 +1,5 @@
+ollama
+pandas
+numpy
+matplotlib
+streamlit
